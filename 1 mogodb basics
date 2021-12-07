@@ -1,0 +1,206 @@
+MongoDB is a NoSQL database. 
+MongoDB is an open source document based NoSQL database.
+Introduction to NoSQL Databases
+===============================
+A database Management System provides the mechanism to store and retrieve the data. There are different kinds of database Management Systems:
+1. RDBMS (Relational Database Management Systems)
+2. OLAP (Online Analytical Processing)
+3. NoSQL (Not only SQL)
+NoSQL databases were created to overcome the limitations of relational databases.
+NoSQL databases are different than relational databases like MQSql,Oracle,MYSql. 
+In relational database you need to create the table, define schema, set the data types of fields etc 
+NoSQL you don’t have to worry about that, you can insert, update data on the fly.
+advantage:
+===========
+NoSQL database is that they are really easy to scale and they are much faster in most types of operations that we perform on database. 
+when you are dealing with huge amount of data then NoSQL database is your best choice.
+
+Limitations of Relational databases
+===================================
+1. In relational database we need to define structure and schema of data first and then only we can process the data.
+2. Relational database systems provides consistency and integrity of data by enforcing ACID properties 
+(Atomicity, Consistency, Isolation and Durability ). 
+database response very slow.
+3. Most of the applications store their data in JSON format and 
+RDBMS don’t provide you a better way of performing operations such as create, insert, update, delete etc on this data. 
+On the other hand NoSQL store their data in JSON format, 
+which is compatible with most of the today’s world application.
+
+What are the advantages of NoSQL
+=================================
+There are several advantages of working with NoSQL databases such as MongoDB and Cassandra. The main advantages are high scalability and high availability.
+
+High scalability: 
+NoSQL database such as MongoDB uses sharding for horizontal scaling. 
+Sharding is partitioning of data and placing it on multiple machines in such a way that the order of the data is preserved. 
+Vertical scaling means adding more resources to the existing machine while horizontal scaling means adding more machines to handle the data. 
+Vertical scaling is not that easy to implement, on the other hand horizontal scaling is easy to implement. 
+Horizontal scaling database examples: MongoDB, Cassandra etc. 
+Because of this feature NoSQL can handle huge amount of data, as the data grows NoSQL scale itself to handle that data in efficient manner.
+
+High Availability: Auto replication feature in MongoDB makes it highly available 
+because in case of any failure data replicates itself to the previous consistent state.
+
+note:
+MongoDB falls in the category of NoSQL document based database.
+
+RDBMS Vs NoSQL
+==============
+RDBMS: It is a structured data that provides more functionality but gives less performance.
+NoSQL: Structured or semi structured data, less functionality and high performance.
+
+So when I say less functionality in NoSQL what’s missing:
+===========================================================
+1. You can’t have constraints in NoSQL
+2. Joins are not supported in NoSQL
+These supports actually hinders the scalability of a database, 
+while using NoSQL database like MongoDB, you can implements these functionalities at the application level.
+
+When to go for NoSQL
+=====================
+When you would want to choose NoSQL over relational database:
+
+1) When you want to store and retrieve huge amount of data.
+2) The relationship between the data you store is not that important
+3) The data is not structured and changing over time
+4) Constraints and Joins support is not required at database level
+5) The data is growing continuously and you need to scale the database regular to handle the data.
+
+-------------------------------------------------------------------------
+
+Introduction to Mongodb
+======================
+MongoDB is an open source, document oriented database that stores data in form of documents (key and value pairs).
+
+document based example:
+======================
+{
+   name: "Chaitanya",                                //field: value
+   age: 30,
+   website: "book.com",
+   hobbies: ["Teaching", "Watching TV"]
+}
+This is a JSON like structure. Where data is stored in form of key and value pairs.
+History of MongoDB
+===================
+MongoDB was created by Eliot and Dwight in 2007, when they faced scalability issues while working with relational database. 
+The organization that developed MongoDB was originally known as 10gen.
+
+In Feb 2009, they changed their business model and released MongoDB as an open source Project. 
+The organization changed its name in 2013 and now known as MongoDB Inc.
+
+Features of MongoDB
+===================
+1. MongoDB provides high performance. Most of the operations in the MongoDB are faster compared to relational databases.
+2. MongoDB provides auto replication feature that allows you to quickly recover data in case of a failure.
+3. Horizontal scaling is possible in MongoDB because of sharing. 
+Sharding is partitioning of data and placing it on multiple machines in such a way that the order of the data is preserved.
+Horizontal scaling vs vertical scaling:
+Vertical scaling means adding more resources to the existing machine while horizontal scaling means adding more machines to handle the data. 
+Vertical scaling is not that easy to implement, on the other hand horizontal scaling is easy to implement. 
+Horizontal scaling database examples: MongoDB, Cassandra etc.
+4. Load balancing: Horizontal scaling allows MongoDB to balanace the load.
+5. High Availabilty: Auto Replication improves the availability of MongoDB database.
+6. Indexing: Index is a single field within the document. 
+
+--------------------------------------------------------------------------------------------
+
+Mapping relational database to MongoDB
+======================================
+rdbms  --------------- mongodb
+database---------------database
+TABLES  ------------------collections
+rows -------------------->documents (field:value,filed:value)
+columns -------------------->fields
+
+Collections in MongoDB is equivalent to the tables in RDBMS.
+Documents in MongoDB is equivalent to the rows in RDBMS.
+Fields in MongoDB is equivalent to the columns in RDBMS.
+
+Fields (key and value pairs) are stored in document, documents are stored in collection and collections are stored in database.
+
+This is how a document looks in MongoDB: As you can see this is similar to the row in RDBMS. The only difference is that they are in JSON format.
+
+{
+name:gowtham,
+age:19,
+hobbies:["","",""]
+}
+
+Table vs Collection
+=====================
+MongoDB automatically inserts a unique _id(12-byte field) field in every document, this serves as primary key for each document.
+
+rdbms
+table format
+
+mongodb
+json format
+
+{
+"_id":objectid("..."),
+sno:
+sname:
+mark:
+college:
+}
+
+{
+"_id":objectid("..."),
+sno:
+sname:
+mark:
+}
+.....
+Another cool thing about MongoDB is that it supports dynamic schema which means 
+one document of a collection can have 4 fields while the other document has only 3 fields. 
+This is not possible in relational database.
+
+------------------------------------------------------------------------------------------------------------
+install mongodb on windows
+==========================
+https://www.mongodb.com/try#community
+
+download and install.
+note: while installing mongodb choose network service.
+
+MongoDB Configuration
+=======================
+Step 1: Locate the folder where you have installed MongoDB.
+      C:\Program Files\MongoDB
+      Here you need to create couple of folders that we need for MongoDB configuration.
+      1. Create two folders here, name them data and log.
+      2. Create another folder inside data and name it as db, that’s where all the data will be stored.
+      That’s it close the window.
+Step 2: Open command prompt (right click and run as administrator). 
+Navigate to the bin folder of MongoDB. 
+The path to the bin folder may be different in your case based on where you have installed the MongoDB.
+
+c:/windows/system32> cd..
+c:/windows>cd..
+c:/>cd program files/mongodb/server/5.3/bin
+c:/program files/mongodb/server/5.3/bin>
+
+Step 3: Configure the data & log folder and set MongoDB as service by typing this command. 
+        Note: This is a one line command.
+
+mongod --directoryperdb --dbpath "C:\Program Files\MongoDB\data\db" --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --rest --install
+
+ex:
+c:/program files/mongodb/server/5.3/bin>mongod --directoryperdb --dbpath "C:\Program Files\MongoDB\data\db" --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --rest --install
+
+Step 4: Now you can start MongoDB as a service by typing this command:
+
+net start MongoDB
+
+ex:
+c:/program files/mongodb/server/5.3/bin>net start MongoDB
+
+That’s it everything is done. Now we should be working in the MongoDB shell and we can run that by typing this command within the bin directory.
+
+ex:
+c:/program files/mongodb/server/5.3/bin>mongo
+
+exit or close mongodb
+ex:
+c:/program files/mongodb/server/5.3/bin>net stop MongoDB
